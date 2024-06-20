@@ -27,7 +27,8 @@ public class BankAccount {
     private Long id;
     @Column(nullable = false, unique = true)
     private int accountNumber;
-    @OneToOne
+    /*Creating child entity in db together event mandatory field id is null: cascade = CascadeType.ALL */
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "bank_client_id", nullable = false)
     private BankClient bankClient;
     @Column(nullable = false)
