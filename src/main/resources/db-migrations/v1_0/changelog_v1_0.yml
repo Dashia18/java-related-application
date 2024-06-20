@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: 20052024_initial_schema_set_up.sql
+      relativeToChangelogFile: true
+

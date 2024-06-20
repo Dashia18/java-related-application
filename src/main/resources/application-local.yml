@@ -1,0 +1,28 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+#        generate_statistics: true
+
+#logging:
+#  level:
+#    org.springframework.orm.jpa: DEBUG
+#    org.springframework.transaction: DEBUG
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.cache: DEBUG
+#    org.hibernate.type.descriptor.sql: TRACE
+#    org.hibernate.stat: DEBUG
+#hibernate:
+#  format_sql: true
+
+env-name: dev
+
+java-related-application-db-url: jdbc:mysql://localhost:3306/java-related
+java-related-application-db-username: root
+java-related-application-db-password: password
+
+event-hub-server: localhost:9092
+
+ENV_LIQUIBASE_CONTEXT: dev

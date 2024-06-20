@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: java-related-application
+  profiles:
+    active: '@activated.profile@'
+  datasource:
+    url: ${java-related-application-db-url}
+    username: ${java-related-application-db-username}
+    password: ${java-related-application-db-password}
+    hikari:
+      max-lifetime: 175000
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+
+  liquibase:
+    change-log: classpath:/db-migrations/changelog.yml
+    contexts: dev
+
+  kafka:
+    bootstrap-servers: ${event-hub-server}
+    consumer:
+      group-id: @project.artifactId@-${env-name}-group # Value is substituted from pom.xml property
+      max-poll-records: 20
+      adf:
+        propagator:
+          group-id: @project.artifactId@-${env-name}-adf-propagator-group
+        pipeline-updater:
+          group-id: @project.artifactId@-${env-name}-adf-pipeline-updater-group
+
+    topics:
+      processedTopic:
+        name: ${processed-events-topic:outbound_processed}
+        sendNotificationsTo: test@gmail.com
+      eventhubAdapterOutboundTopic:
+        name: ${event-hub-adapter-outbound-topic:inbound_internal}
+
+hibernate:
+  format_sql: false
+  jdbc:
+    time_zone: UTC
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,loggers"
+
+environment-name:  ${env-name}
+
+server:
+  port: ${JAVA_RELATED_SERVER_PORT:8080}
