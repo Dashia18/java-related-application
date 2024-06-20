@@ -41,7 +41,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = BankAccountController.BANK_ACCOUNT_API_URI)
 public class BankAccountController {
     //TODO: CRUD operations: naming rules, Rest designApi, singular/plural in naming, status codes
-    public static final String BANK_ACCOUNT_API_URI = "bank/account";
+    public static final String BANK_ACCOUNT_API_URI = "bank/account/";
 
     private final BankAccountService bankAccountService;
 
@@ -59,9 +59,9 @@ public class BankAccountController {
     public BankAccountDto post(@RequestBody @Valid final BankAccountDto dto) {
         checkArgument(dto.id() == null, "It is forbidden for a client to specify ADF pipeline id");
 
-        log.info("A request to create bank account for id {} has been received", dto.id());
+        log.info("A request to create bank account has been received");
 
-        return bankAccountService.getBankAccount(Long.toString(dto.id()));
+        return bankAccountService.createBankAccount(dto);
     }
 
 }

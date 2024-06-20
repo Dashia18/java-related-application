@@ -11,4 +11,7 @@ public final class Constants {
     public static final String DEFAULT_SORTING_DIRECTION = "DESC";
     public static final String DEFAULT_TIMEZONE_VALUE = "GMT";
     public static final String DEFAULT_SORTING_FIELD = "id";
+
+    public static final String AUTHORITY_USER_WRITE = "User.Write";
+    public static final String AUTHORITY_USER_READ = "User.Read";
 }

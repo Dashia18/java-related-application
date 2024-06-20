@@ -1,8 +1,8 @@
 package org.daria.serebriakova.service;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.daria.serebriakova.dto.BankAccountDto;
 import org.daria.serebriakova.mapper.BankAccountMapper;
 import org.daria.serebriakova.storage.model.BankAccount;
@@ -11,7 +11,7 @@ import org.daria.serebriakova.util.Page;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class BankAccountService {
     private final BankAccountRepo bankAccountRepo;
     private final BankAccountMapper bankAccountMapper;
@@ -27,7 +27,7 @@ public class BankAccountService {
         return new Page();
     }
 
-    public BankAccountDto createBankAccount( BankAccountDto dto) {
+    public BankAccountDto createBankAccount(BankAccountDto dto) {
         BankAccount bankAccount = bankAccountRepo.save(bankAccountMapper.fromDto(dto));
         return bankAccountMapper.toDto(bankAccount);
     }
