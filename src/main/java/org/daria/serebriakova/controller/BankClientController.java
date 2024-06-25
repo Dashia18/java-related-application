@@ -51,9 +51,11 @@ public class BankClientController {
 
     @PutMapping(value = CLIENT_API_URI, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public BankClientDto put(@RequestBody @Valid final BankClientDto dto) {
+    public BankClientDto put(
+            @RequestParam(name = DEFAULT_SORTING_FIELD, required = false) String id,
+            @RequestBody @Valid final BankClientDto dto) {
         log.info("A request to update bank client has been received");
 
-        return bankAccountService.updateBankClient(dto);
+        return bankAccountService.updateBankClient(id, dto);
     }
 }

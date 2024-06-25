@@ -27,10 +27,10 @@ public class BankClientService {
                 .toList();
     }
 
-    public BankClientDto updateBankClient(BankClientDto dto) {
+    public BankClientDto updateBankClient(String id, BankClientDto dto) {
         String name = dto.name();
         String surname = dto.surname();
-        BankClient clientForUpdate = bankClientRepo.findByNameAndSurname(name, surname)
+        BankClient clientForUpdate = bankClientRepo.findById(Long.valueOf(id))
                 .orElseThrow(() -> new NoSuchElementException("There are no client: " + name + " " + surname));
         clientForUpdate.setAddress(dto.address());
         BankClient bankClient = bankClientRepo.save(clientForUpdate);

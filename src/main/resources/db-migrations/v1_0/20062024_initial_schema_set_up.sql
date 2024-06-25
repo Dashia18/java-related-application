@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset daria.serebriakova:20052024 logicalFilePath:classpath:/db-migrations/v1_0/20052024_initial_schema_set_up.sql
+--changeset daria.serebriakova:20052024 logicalFilePath:classpath:/db-migrations/v1_0/20062024_initial_schema_set_up.sql
 
 CREATE TABLE if not exists bank_clients (
   id bigint NOT NULL AUTO_INCREMENT,

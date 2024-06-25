@@ -1,35 +1,23 @@
 package org.daria.serebriakova.controller;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static org.daria.serebriakova.util.Constants.DEFAULT_SORTING_DIRECTION;
-import static org.daria.serebriakova.util.Constants.DEFAULT_SORTING_FIELD;
-import static org.daria.serebriakova.util.Constants.SORT_DIRECTION_PARAM;
-import static org.daria.serebriakova.util.Constants.SORT_FIELD_PARAM;
-import static org.daria.serebriakova.util.Page.DEFAULT_LIMIT;
-import static org.daria.serebriakova.util.Page.DEFAULT_OFFSET;
-import static org.daria.serebriakova.util.Page.LIMIT_PARAM;
-import static org.daria.serebriakova.util.Page.OFFSET_PARAM;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import java.util.List;
-import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.daria.serebriakova.dto.BankAccountDto;
-import org.daria.serebriakova.dto.BankClientDto;
+import org.daria.serebriakova.dto.MoneyTransferDto;
+import org.daria.serebriakova.dto.MoneyTransferResponseDto;
 import org.daria.serebriakova.service.BankAccountService;
-import org.daria.serebriakova.storage.model.BankAccount;
-import org.daria.serebriakova.storage.repo.BankAccountRepo;
+import org.daria.serebriakova.service.MoneyTransferService;
 import org.daria.serebriakova.util.Constants;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.util.CollectionUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,14 +35,15 @@ public class BankAccountController {
     public static final String BANK_ACCOUNTS_API_URI = "accounts/";
 
     private final BankAccountService bankAccountService;
+    private final MoneyTransferService moneyTransferService;
 
     @GetMapping(value = BANK_ACCOUNT_API_URI, produces = MediaType.APPLICATION_JSON_VALUE)
     public BankAccountDto get(
-            @RequestParam(name = DEFAULT_SORTING_FIELD, required = false) String id) {
+            @RequestParam String accountNumber) {
 
-        log.info("A request to retrieve bank account for id {} has been received", id);
+        log.info("A request to retrieve bank account for id {} has been received", accountNumber);
 
-        return bankAccountService.getBankAccount(id);
+        return bankAccountService.getBankAccount(accountNumber);
     }
 
     @GetMapping(value = BANK_ACCOUNTS_API_URI, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -74,4 +63,15 @@ public class BankAccountController {
         return bankAccountService.createBankAccount(dto);
     }
 
+    @PutMapping(value = BANK_ACCOUNT_API_URI + "transfer/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public MoneyTransferDto transfer(@RequestBody @Valid final MoneyTransferDto dto) {
+        checkArgument(dto.sourceAccountNumber() != null, "Source account has not specified");
+        checkArgument(dto.targetAccountNumber() != null, "Target account has not specified");
+        checkArgument(dto.amount() > 0, "Amount of transfer should be more then 0");
+
+        log.info("A request to create bank account has been received");
+
+        return moneyTransferService.transferMoney(dto);
+    }
 }
