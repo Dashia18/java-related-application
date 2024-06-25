@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Constants {
 
+    public static final String BANK_API_URI = "bank/";
     public static final String SORT_FIELD_PARAM = "sortField";
     public static final String SORT_DIRECTION_PARAM = "sortDirection";
     public static final String DEFAULT_SORTING_DIRECTION = "DESC";

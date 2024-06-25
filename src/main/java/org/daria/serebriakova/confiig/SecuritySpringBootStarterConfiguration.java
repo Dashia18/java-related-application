@@ -2,6 +2,7 @@ package org.daria.serebriakova.confiig;
 
 
 import static org.daria.serebriakova.controller.BankAccountController.BANK_ACCOUNT_API_URI;
+import static org.daria.serebriakova.util.Constants.BANK_API_URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
@@ -24,7 +25,7 @@ public class SecuritySpringBootStarterConfiguration {
     private static final String ACTUATOR_HEALTH_CHECK_ENDPOINT_ID = "health";
     private static final String ACTUATOR_LOGGERS_ENDPOINT_ID = "loggers";
     private static final String ACTUATOR_INFO_ENDPOINT_ID = "info";
-    private static final String ALLOWED_API_PATTERN = BANK_ACCOUNT_API_URI + "**";
+    private static final String ALLOWED_API_PATTERN = BANK_API_URI + "**";
 
     private static final RequestMatcher PROTECTED_ADMIN_ACTUATOR_URLS_MATCHERS =
             EndpointRequest.to(

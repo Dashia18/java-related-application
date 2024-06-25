@@ -13,10 +13,12 @@ import static org.daria.serebriakova.util.Page.OFFSET_PARAM;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import java.util.List;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.daria.serebriakova.dto.BankAccountDto;
+import org.daria.serebriakova.dto.BankClientDto;
 import org.daria.serebriakova.service.BankAccountService;
 import org.daria.serebriakova.storage.model.BankAccount;
 import org.daria.serebriakova.storage.repo.BankAccountRepo;
@@ -38,14 +40,15 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = BankAccountController.BANK_ACCOUNT_API_URI)
+@RequestMapping(value = Constants.BANK_API_URI)
 public class BankAccountController {
     //TODO: CRUD operations: naming rules, Rest designApi, singular/plural in naming, status codes
-    public static final String BANK_ACCOUNT_API_URI = "bank/account/";
+    public static final String BANK_ACCOUNT_API_URI = "account/";
+    public static final String BANK_ACCOUNTS_API_URI = "accounts/";
 
     private final BankAccountService bankAccountService;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = BANK_ACCOUNT_API_URI, produces = MediaType.APPLICATION_JSON_VALUE)
     public BankAccountDto get(
             @RequestParam(name = DEFAULT_SORTING_FIELD, required = false) String id) {
 
@@ -54,10 +57,17 @@ public class BankAccountController {
         return bankAccountService.getBankAccount(id);
     }
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = BANK_ACCOUNTS_API_URI, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<BankAccountDto> getAll() {
+        log.info("A request to retrieve all accounts has been received");
+
+        return bankAccountService.getBankAccounts();
+    }
+
+    @PostMapping(value = BANK_ACCOUNT_API_URI, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public BankAccountDto post(@RequestBody @Valid final BankAccountDto dto) {
-        checkArgument(dto.id() == null, "It is forbidden for a client to specify ADF pipeline id");
+        checkArgument(dto.id() == null, "It is forbidden for a client to specify account id");
 
         log.info("A request to create bank account has been received");
 

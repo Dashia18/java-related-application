@@ -23,18 +23,11 @@ spring:
     consumer:
       group-id: @project.artifactId@-${env-name}-group # Value is substituted from pom.xml property
       max-poll-records: 20
-      adf:
-        propagator:
-          group-id: @project.artifactId@-${env-name}-adf-propagator-group
-        pipeline-updater:
-          group-id: @project.artifactId@-${env-name}-adf-pipeline-updater-group
 
     topics:
       processedTopic:
         name: ${processed-events-topic:outbound_processed}
         sendNotificationsTo: test@gmail.com
-      eventhubAdapterOutboundTopic:
-        name: ${event-hub-adapter-outbound-topic:inbound_internal}
 
 hibernate:
   format_sql: false

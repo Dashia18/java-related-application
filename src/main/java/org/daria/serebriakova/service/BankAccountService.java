@@ -1,6 +1,8 @@
 package org.daria.serebriakova.service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.daria.serebriakova.dto.BankAccountDto;
@@ -22,13 +24,16 @@ public class BankAccountService {
         return bankAccountMapper.toDto(bankAccount);
     }
 
-    public Page<BankAccountDto> getBankAccounts(String id, int offset, int limit,
-                                                String sortField, String sortDirectionParam) {
-        return new Page();
+    public List<BankAccountDto> getBankAccounts() {
+        return bankAccountRepo.findAll().stream()
+                .map(bankAccountMapper::toDto)
+                .toList();
     }
 
     public BankAccountDto createBankAccount(BankAccountDto dto) {
-        BankAccount bankAccount = bankAccountRepo.save(bankAccountMapper.fromDto(dto));
+        BankAccount accountToCreate = bankAccountMapper.fromDto(dto)
+                .setAccountNumber(UUID.randomUUID());
+        BankAccount bankAccount = bankAccountRepo.save(accountToCreate);
         return bankAccountMapper.toDto(bankAccount);
     }
 }

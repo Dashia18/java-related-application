@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface BankClientRepo extends JpaRepository<BankClient, Long> {
+    Optional<BankClient> findByNameAndSurname(String name, String surname);
 }
