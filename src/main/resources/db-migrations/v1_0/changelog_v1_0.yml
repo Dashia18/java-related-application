@@ -1,5 +1,8 @@
 databaseChangeLog:
   - include:
-      file: 20052024_initial_schema_set_up.sql
+      file: 20062024_initial_schema_set_up.sql
+      relativeToChangelogFile: true
+  - include:
+      file: 25062024_add_transfer_table.sql
       relativeToChangelogFile: true
 

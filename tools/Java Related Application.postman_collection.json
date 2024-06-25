@@ -13,6 +13,37 @@
 					"name": "Client",
 					"item": [
 						{
+							"name": "Get Bank Clients",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "User.Write",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/bank/clients/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"bank",
+										"clients",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Get Bank Client by id",
 							"request": {
 								"auth": {
@@ -66,7 +97,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"address\": \"Grand ave.\"\n}",
+									"raw": "{\n    \"address\": \"Flower ave.\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -74,7 +105,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/bank/client/",
+									"raw": "http://localhost:8080/bank/client/?id=1",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -83,73 +114,6 @@
 									"path": [
 										"bank",
 										"client",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Bank Clients",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "User.Write",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/bank/clients/",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"bank",
-										"clients",
-										""
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Account",
-					"item": [
-						{
-							"name": "Get Bank Account",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "User.Write",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/bank/account/?id=1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"bank",
-										"account",
 										""
 									],
 									"query": [
@@ -161,47 +125,12 @@
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "Create Bank Account and Client",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "User.Write",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"bankClient\": {\n        \"name\": \"Jorge\",\n        \"surname\": \"Smitt\",\n        \"address\": \"Grand ave.\"\n    },\n    \"amount\": 10000,\n    \"isPremium\": true\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/bank/account/",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"bank",
-										"account",
-										""
-									]
-								}
-							},
-							"response": []
-						},
+						}
+					]
+				},
+				{
+					"name": "Account",
+					"item": [
 						{
 							"name": "Get Bank Accounts",
 							"request": {
@@ -227,6 +156,124 @@
 									"path": [
 										"bank",
 										"accounts",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Bank Account by account number",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "User.Write",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/bank/account/?accountNumber=bf27e2e6-9eb6-4c49-8f74-759309053bcf",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"bank",
+										"account",
+										""
+									],
+									"query": [
+										{
+											"key": "accountNumber",
+											"value": "bf27e2e6-9eb6-4c49-8f74-759309053bcf"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Bank Account and Client",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "User.Write",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"bankClient\": {\n        \"name\": \"Gorge\",\n        \"surname\": \"Ruby\",\n        \"address\": \"Sunny ave.\"\n    },\n    \"amount\": 10000,\n    \"isPremium\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/bank/account/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"bank",
+										"account",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Transfer Money",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "User.Write",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sourceAccountNumber\": \"52d71cad-c3f3-418a-a4df-7b927eae524a\",\n    \"targetAccountNumber\": \"d3509fb4-d763-424a-a807-f7d2497dc73c\",\n    \"amount\": 200,\n    \"performRollback\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/bank/account/transfer/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"bank",
+										"account",
+										"transfer",
 										""
 									]
 								}
