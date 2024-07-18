@@ -4,7 +4,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ConcurrentMapAService {
+public class ConcurrentMapService {
 
     private final ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
 
