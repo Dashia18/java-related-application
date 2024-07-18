@@ -1,6 +1,7 @@
 package org.daria.serebriakova.controller;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static org.daria.serebriakova.util.Constants.COMMON_API_URI;
 import static org.daria.serebriakova.util.Constants.DEFAULT_SORTING_FIELD;
 
 import jakarta.validation.Valid;
@@ -25,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = Constants.BANK_API_URI)
+@RequestMapping(value = COMMON_API_URI + Constants.BANK_API_URI)
 public class BankClientController {
     //TODO: CRUD operations: naming rules, Rest designApi, singular/plural in naming, status codes
     public static final String CLIENT_API_URI = "client/";
