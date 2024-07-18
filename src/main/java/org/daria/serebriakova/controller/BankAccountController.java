@@ -1,14 +1,15 @@
 package org.daria.serebriakova.controller;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static org.daria.serebriakova.util.Constants.COMMON_API_URI;
 
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.daria.serebriakova.dto.BankAccountDto;
 import org.daria.serebriakova.dto.MoneyTransferDto;
-import org.daria.serebriakova.dto.MoneyTransferResponseDto;
 import org.daria.serebriakova.service.BankAccountService;
 import org.daria.serebriakova.service.MoneyTransferService;
 import org.daria.serebriakova.util.Constants;
@@ -28,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = Constants.BANK_API_URI)
+@RequestMapping(value = COMMON_API_URI + Constants.BANK_API_URI)
 public class BankAccountController {
     //TODO: CRUD operations: naming rules, Rest designApi, singular/plural in naming, status codes
     public static final String BANK_ACCOUNT_API_URI = "account/";
@@ -66,12 +67,9 @@ public class BankAccountController {
     @PutMapping(value = BANK_ACCOUNT_API_URI + "transfer/", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public MoneyTransferDto transfer(@RequestBody @Valid final MoneyTransferDto dto) {
-        checkArgument(dto.sourceAccountNumber() != null, "Source account has not specified");
-        checkArgument(dto.targetAccountNumber() != null, "Target account has not specified");
-        checkArgument(dto.amount() > 0, "Amount of transfer should be more then 0");
-
         log.info("A request to create bank account has been received");
-
+        var i = 1;
+        val j = 1;
         return moneyTransferService.transferMoney(dto);
     }
 }
