@@ -23,20 +23,6 @@ public class IncrementDecrementService {
         log.info("c: {}", c); //3
     }
 
-    public static void sumPrePostIncrement(int i) {
-        log.info("before i: {}", i); //11
-        log.info("i++ + ++i: {}", i++ + ++i); //11 (i = 12) + 13 (i =13) = 24
-        log.info("after i: {}", i); //13
-    }
-
-    public static void prePostIncrementDecrement(int a, int b) {
-        log.info("before a: {}", a); //22
-        log.info("before b: {}", b); //22
-        log.info("--b - ++a + ++b - --a: {}", --b - ++a + ++b - --a);//21 - 23 + 22 - 22 = -2
-        log.info("after aj: {}", a); //22
-        log.info("after b: {}", b); //22
-    }
-
     public static void prePostIncrement(int a, int b) {
         log.info("before a: {}", a); //11
         log.info("before b: {}", b); //22
@@ -46,9 +32,24 @@ public class IncrementDecrementService {
         log.info("after b: {}", b); //24
     }
 
+    public static void sumPrePostIncrement(int i) {
+        log.info("before i: {}", i); //11
+        log.info("i++ + ++i: {}", i++ + ++i); //11 (i = 12) + 13 (i =13) = 24
+        log.info("after i: {}", i); //13
+    }
+
+    public static void prePostIncrementDecrement(int a, int b) {
+        log.info("before a: {}", a); //22
+        log.info("before b: {}", b); //22
+        log.info("--b - ++a + ++b - --a: {}", --b - ++a + ++b - --a); //21 - 23 + 22 - 22 = -2
+        log.info("after aj: {}", a); //22
+        log.info("after b: {}", b); //22
+    }
+
     public static void prePostIncrementDecrement(int i) {
         log.info("before i: {}", i); //0
-        log.info("i++ - --i + ++i - i--: {}", i++ - --i + ++i - i--); //0 (i = 1) - 0 (i = 0) + 1 (i = 1) - 1 (i = 0) = 0
+        log.info("i++ - --i + ++i - i--: {}", i++ - --i + ++i - i--);
+        //0 (i = 1) - 0 (i = 0) + 1 (i = 1) - 1 (i = 0) = 0
         log.info("after i: {}", i); //0
     }
 
