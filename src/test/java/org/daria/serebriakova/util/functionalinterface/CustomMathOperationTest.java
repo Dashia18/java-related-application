@@ -11,7 +11,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 public class CustomMathOperationTest {
 
     @InjectMocks
-    private CustomMathOperation customMathOperation ;
+    private CustomMathOperation customMathOperation;
+
     @Test
     public void canUseOverriddenDefaultMethod() {
         double actual = customMathOperation.operate(5, 7);
