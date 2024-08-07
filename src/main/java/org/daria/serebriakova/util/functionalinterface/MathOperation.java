@@ -1,4 +1,4 @@
-package org.daria.serebriakova.util;
+package org.daria.serebriakova.util.functionalinterface;
 
 @FunctionalInterface
 public interface MathOperation {

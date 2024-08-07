@@ -1,4 +1,4 @@
-package org.daria.serebriakova.util;
+package org.daria.serebriakova.util.functionalinterface;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,8 +22,8 @@ public class MathOperationTest {
     public void canCallDefaultMethod() {
         MathOperation multiply = (a, b) -> a * b;
 
-        double actual =  multiply.add(multiply.operate(5, 2), 5);
-        double actualUsingMultiplyAndAdd =  multiply.multiplyAndAdd(5,2,5);
+        double actual = multiply.add(multiply.operate(5, 2), 5);
+        double actualUsingMultiplyAndAdd = multiply.multiplyAndAdd(5, 2, 5);
 
         assertThat(actual).isEqualTo(actualUsingMultiplyAndAdd);
     }
