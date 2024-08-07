@@ -10,12 +10,25 @@ import org.mockito.junit.jupiter.MockitoExtension;
 public class MathOperationTest {
 
     @Test
-    public void canImplementAbstractMethod() {
+    public void canImplementAbstractMethodWithLambdaExpression() {
         MathOperation division = (a, b) -> a / b;
 
         double actual = division.operate(10, 2);
 
         assertThat(actual).isEqualTo(5);
+    }
+
+    @Test
+    public void canImplementAbstractMethodWithMethodReference() {
+        MathOperation division = MathOperationTest::divide;
+
+        double actual = division.operate(10, 2);
+
+        assertThat(actual).isEqualTo(5);
+    }
+
+    public static double divide(double a, double b) {
+        return a / b;
     }
 
     @Test
