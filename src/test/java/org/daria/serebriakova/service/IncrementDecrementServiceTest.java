@@ -29,8 +29,8 @@ public class IncrementDecrementServiceTest {
         assertThat(actual).isEqualTo(1);
     }
 
-    @Test
     //11 + 22 + 11 (a=12) + 22 (b =23) + 13 (a = 13) + 24 (b = 24) = 103
+    @Test
     void canCalculatePrePostIncrement() {
         int actual = incrementDecrementService.calculatePrePostIncrement(11, 22);
 
@@ -45,24 +45,26 @@ public class IncrementDecrementServiceTest {
         assertThat(actual).isEqualTo(24);
     }
 
-    @Test
+
     //21 - 23 + 22 - 22 = -2
+    @Test
     void canCalculatePrePostIncrementDecrement() {
         int actual = incrementDecrementService.calculatePrePostIncrementDecrement(22, 22);
 
         assertThat(actual).isEqualTo(-2);
     }
 
-    @Test
     //0 (i = 1) - 0 (i = 0) + 1 (i = 1) - 1 (i = 0) = 0
+    @Test
     void canCalculatePrePostIncrementDecrementForOneValue() {
         int actual = incrementDecrementService.calculatePrePostIncrementDecrement(0);
 
         assertThat(actual).isEqualTo(0);
     }
 
-    @Test
+
     //1 (i = 0) - 2 (i = 1) - 3 (i = 2) = -4
+    @Test
     void canCalculatePostDecrementForOneValue() {
         int actual = incrementDecrementService.calculatePostDecrement(1, 2, 3);
 
