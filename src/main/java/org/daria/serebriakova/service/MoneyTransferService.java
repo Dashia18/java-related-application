@@ -4,11 +4,9 @@ import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.tuple.Pair;
 import org.daria.serebriakova.dto.MoneyTransferDto;
-import org.daria.serebriakova.dto.MoneyTransferResponseDto;
 import org.daria.serebriakova.dto.TransferStatus;
 import org.daria.serebriakova.storage.model.BankAccount;
 import org.daria.serebriakova.storage.model.MoneyTransfer;
-import org.daria.serebriakova.storage.repo.BankAccountRepo;
 import org.daria.serebriakova.storage.repo.MoneyTransferRepo;
 import org.springframework.stereotype.Service;
 
