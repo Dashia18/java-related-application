@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: java-related-application
+  datasource:
+    url: jdbc:tc:mysql:5.7:///test
+  liquibase:
+    change-log: classpath:db-migrations/changelog-test.yaml
+    enabled: true
+
+testcontainers:
+  reuse:
+    enable: true
+
+env-name: test
+ENV_LIQUIBASE_CONTEXT: test
