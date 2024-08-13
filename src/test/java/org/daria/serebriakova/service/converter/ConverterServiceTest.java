@@ -1,4 +1,4 @@
-package org.daria.serebriakova.service;
+package org.daria.serebriakova.service.converter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,9 +11,18 @@ public class ConverterServiceTest extends AbstractIntegrationTest {
 
     @Test
     public void canCheckQualifierWork() {
-        LocalDate expected = LocalDate.of(1987, Month.AUGUST, 8);
+        LocalDate expected = LocalDate.of(1987, Month.AUGUST, 13);
 
         LocalDate actual = converterService.convert("13.08.1987");
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void canChangeDependency() {
+        LocalDate expected = LocalDate.of(1987, Month.AUGUST, 13);
+
+        LocalDate actual = converterService.convertWithFormatter("13/08/1987", slashDateFormatter);
 
         assertThat(actual).isEqualTo(expected);
     }
