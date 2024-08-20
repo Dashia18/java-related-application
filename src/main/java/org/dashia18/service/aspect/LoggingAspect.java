@@ -1,11 +1,9 @@
 package org.dashia18.service.aspect;
 
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 /*
@@ -40,7 +38,7 @@ public class LoggingAspect {
 
         long executionTime = System.currentTimeMillis() - start;
 
-       log.info(joinPoint.getSignature() + " executed in " + executionTime + "ms");
+        log.info(joinPoint.getSignature() + " executed in " + executionTime + "ms");
         return proceed;
     }
 }
