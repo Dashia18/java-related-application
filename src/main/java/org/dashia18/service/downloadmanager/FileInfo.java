@@ -7,6 +7,7 @@ import lombok.Data;
 @Builder
 public class FileInfo {
     private long id;
+    private String fileName;
     private String name;
     private long size;
     private String metaInfo;

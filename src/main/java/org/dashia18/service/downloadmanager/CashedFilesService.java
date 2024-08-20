@@ -24,7 +24,11 @@ public class CashedFilesService implements ThirdPartyDownloadLib {
 
     @Override
     public List<FileInfo> getFiles() {
-        return thirdPartyDownloadLib.getFiles();
+        List<FileInfo> fileInfos = thirdPartyDownloadLib.getFiles();
+        fileInfos.stream()
+                .filter(el -> !cache.containsKey(el.getId()))
+                .forEach(el -> cache.put(el.getId(), el));
+        return fileInfos;
     }
 
     @Override
