@@ -1,6 +1,7 @@
 package org.dashia18.service.downloadmanager;
 
 import java.util.List;
+import org.dashia18.service.aspect.LogExecutionTime;
 import org.dashia18.storage.model.File;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ public class DownLoadManager {
 
     }
 
+    @LogExecutionTime
     public byte[] downLoadFile(long id) {
         File file = thirdPartyDownloadLib.getFile(id);
         return thirdPartyDownloadLib.downLoadFile(file);
