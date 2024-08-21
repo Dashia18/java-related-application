@@ -6,7 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.time.OffsetDateTime;
 import lombok.Data;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Data
 @Entity
@@ -23,6 +25,21 @@ public class BankClient {
     private String surname;
 
     @Column(nullable = false)
-    private String address;
+    private OffsetDateTime dateOfBirth;
 
+    @Column
+    private String country;
+
+    @Column
+    private String street;
+
+    @Column
+    private Integer building;
+
+    @Column
+    private Integer flat;
+
+    @LastModifiedDate
+    @Column(nullable = false)
+    private OffsetDateTime updatedDate;
 }
