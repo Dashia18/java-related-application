@@ -32,7 +32,10 @@ public class BankClientService {
         String surname = dto.surname();
         BankClient clientForUpdate = bankClientRepo.findById(Long.valueOf(id))
                 .orElseThrow(() -> new NoSuchElementException("There are no client: " + name + " " + surname));
-        clientForUpdate.setAddress(dto.address());
+        clientForUpdate.setCountry(dto.country());
+        clientForUpdate.setStreet(dto.street());
+        clientForUpdate.setBuilding(dto.building());
+        clientForUpdate.setFlat(dto.flat());
         BankClient bankClient = bankClientRepo.save(clientForUpdate);
         return bankClientMapper.toDto(bankClient);
     }

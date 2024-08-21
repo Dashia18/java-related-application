@@ -3,10 +3,10 @@
 --changeset daria.serebriakova:21082024 logicalFilePath:classpath:/db-migrations/v1_0/21082024_add_clients.sql
 
 INSERT INTO bank_clients (id, name, surname, address)
-VALUES (1, 'Moly', 'Miles', 'sunny ave. 34');
+VALUES (1, 'Moly', 'Miles', 'Sunny ave. 34');
 
 INSERT INTO bank_clients (id, name, surname, address)
-VALUES (2, 'Jorge', 'Ruby', 'sunny ave. 78');
+VALUES (2, 'Jorge', 'Ruby', 'Sunny ave. 78');
 
 INSERT INTO bank_clients (id, name, surname, address)
 VALUES (3, 'Gorge', 'Smite', 'Rainy st. 2');
