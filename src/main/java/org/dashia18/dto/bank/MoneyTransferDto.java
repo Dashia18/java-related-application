@@ -2,8 +2,9 @@ package org.dashia18.dto.bank;
 
 
 import java.util.Objects;
+import org.dashia18.storage.model.Auditable;
 
-public record MoneyTransferDto(String sourceAccountNumber, String targetAccountNumber, long amount,
+public record MoneyTransferDto(Long id, String sourceAccountNumber, String targetAccountNumber, long amount,
                                boolean performRollback) {
     /**
      * Verification of input data for creation the record class, run for default constructor.

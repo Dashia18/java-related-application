@@ -17,3 +17,6 @@ databaseChangeLog:
   - include:
       file: 21082024_update_street_and_building.sql
       relativeToChangelogFile: true
+  - include:
+      file: 24082024_add_audit_table.sql
+      relativeToChangelogFile: true

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = Constants.COMMON_API_URI + ConcurrentController.CONCURRENT_API_URI)
 public class ConcurrentController {
-    //TODO: CRUD operations: naming rules, Rest designApi, singular/plural in naming, status codes
     public static final String CONCURRENT_API_URI = "concurrent/";
     public static final String REENTRANT_LOCK_API_URI = "reentrant/lock/";
 

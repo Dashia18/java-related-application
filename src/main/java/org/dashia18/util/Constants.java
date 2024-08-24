@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Constants {
+    public static final String JSON_TYPE = "json";
+    public static final String ADMIN_USER = "admin";
 
     public static final String BANK_API_URI = "bank/";
     public static final String COMMON_API_URI = "java/related/";
