@@ -1,4 +1,4 @@
-package org.dashia18.storage.model;
+package org.dashia18.storage.model.bank;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,7 +14,7 @@ import java.util.UUID;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.dashia18.dto.TransferStatus;
+import org.dashia18.dto.bank.TransferStatus;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import org.springframework.data.annotation.CreatedDate;

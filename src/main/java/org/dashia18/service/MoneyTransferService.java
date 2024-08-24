@@ -3,11 +3,11 @@ package org.dashia18.service;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.tuple.Pair;
-import org.dashia18.dto.MoneyTransferDto;
-import org.dashia18.dto.TransferStatus;
-import org.dashia18.storage.model.BankAccount;
-import org.dashia18.storage.model.MoneyTransfer;
-import org.dashia18.storage.repo.MoneyTransferRepo;
+import org.dashia18.dto.bank.MoneyTransferDto;
+import org.dashia18.dto.bank.TransferStatus;
+import org.dashia18.storage.model.bank.BankAccount;
+import org.dashia18.storage.model.bank.MoneyTransfer;
+import org.dashia18.storage.repo.bank.MoneyTransferRepo;
 import org.springframework.stereotype.Service;
 
 @Service

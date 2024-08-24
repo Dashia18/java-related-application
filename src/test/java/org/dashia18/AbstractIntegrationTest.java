@@ -3,7 +3,7 @@ package org.dashia18;
 import org.dashia18.config.JavaRelatedIntegrationTest;
 import org.dashia18.service.converter.ConverterService;
 import org.dashia18.service.converter.Formatter;
-import org.dashia18.storage.repo.BankAccountRepo;
+import org.dashia18.storage.repo.bank.BankAccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @JavaRelatedIntegrationTest

@@ -5,11 +5,11 @@ import java.util.NoSuchElementException;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.tuple.Pair;
-import org.dashia18.dto.BankAccountDto;
+import org.dashia18.dto.bank.BankAccountDto;
 import org.dashia18.mapper.BankAccountMapper;
-import org.dashia18.storage.model.BankAccount;
-import org.dashia18.storage.repo.BankAccountRepo;
-import org.dashia18.storage.repo.MoneyTransferRepo;
+import org.dashia18.storage.model.bank.BankAccount;
+import org.dashia18.storage.repo.bank.BankAccountRepo;
+import org.dashia18.storage.repo.bank.MoneyTransferRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
