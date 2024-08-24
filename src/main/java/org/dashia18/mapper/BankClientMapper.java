@@ -1,7 +1,7 @@
 package org.dashia18.mapper;
 
-import org.dashia18.dto.BankClientDto;
-import org.dashia18.storage.model.BankClient;
+import org.dashia18.dto.bank.BankClientDto;
+import org.dashia18.storage.model.bank.BankClient;
 import org.mapstruct.Mapper;
 
 @Mapper

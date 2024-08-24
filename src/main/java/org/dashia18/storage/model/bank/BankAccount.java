@@ -1,4 +1,4 @@
-package org.dashia18.storage.model;
+package org.dashia18.storage.model.bank;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

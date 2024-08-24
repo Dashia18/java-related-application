@@ -2,8 +2,8 @@ package org.dashia18.mapper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
-import org.dashia18.dto.BankAccountDto;
-import org.dashia18.storage.model.BankAccount;
+import org.dashia18.dto.bank.BankAccountDto;
+import org.dashia18.storage.model.bank.BankAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 

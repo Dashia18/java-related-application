@@ -1,14 +1,17 @@
 package org.dashia18.controller;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static org.dashia18.storage.model.audit.AuditableEntityType.MONEY_TRANSFER;
+import static org.dashia18.storage.model.audit.OperationType.CREATE;
 
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import org.dashia18.dto.BankAccountDto;
-import org.dashia18.dto.MoneyTransferDto;
+import org.dashia18.dto.bank.BankAccountDto;
+import org.dashia18.dto.bank.MoneyTransferDto;
+import org.dashia18.service.AuditService;
 import org.dashia18.service.BankAccountService;
 import org.dashia18.service.MoneyTransferService;
 import org.dashia18.util.Constants;
@@ -67,8 +70,6 @@ public class BankAccountController {
     @ResponseStatus(HttpStatus.CREATED)
     public MoneyTransferDto transfer(@RequestBody @Valid final MoneyTransferDto dto) {
         log.info("A request to create bank account has been received");
-        var i = 1;
-        val j = 1;
         return moneyTransferService.transferMoney(dto);
     }
 }

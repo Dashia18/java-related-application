@@ -8,7 +8,7 @@ import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.dashia18.dto.BankClientDto;
+import org.dashia18.dto.bank.BankClientDto;
 import org.dashia18.service.BankClientService;
 import org.dashia18.util.Constants;
 import org.springframework.http.HttpStatus;

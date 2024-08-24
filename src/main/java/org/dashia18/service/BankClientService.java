@@ -3,10 +3,10 @@ package org.dashia18.service;
 import java.util.List;
 import java.util.NoSuchElementException;
 import lombok.RequiredArgsConstructor;
-import org.dashia18.dto.BankClientDto;
+import org.dashia18.dto.bank.BankClientDto;
 import org.dashia18.mapper.BankClientMapper;
-import org.dashia18.storage.model.BankClient;
-import org.dashia18.storage.repo.BankClientRepo;
+import org.dashia18.storage.model.bank.BankClient;
+import org.dashia18.storage.repo.bank.BankClientRepo;
 import org.springframework.stereotype.Service;
 
 @Service

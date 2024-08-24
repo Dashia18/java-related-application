@@ -2,8 +2,8 @@ package org.dashia18.mapper;
 
 import static org.mapstruct.InjectionStrategy.CONSTRUCTOR;
 
-import org.dashia18.dto.BankAccountDto;
-import org.dashia18.storage.model.BankAccount;
+import org.dashia18.dto.bank.BankAccountDto;
+import org.dashia18.storage.model.bank.BankAccount;
 import org.mapstruct.DecoratedWith;
 import org.mapstruct.Mapper;
 

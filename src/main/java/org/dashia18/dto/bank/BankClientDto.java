@@ -1,4 +1,4 @@
-package org.dashia18.dto;
+package org.dashia18.dto.bank;
 
 import java.time.OffsetDateTime;
 

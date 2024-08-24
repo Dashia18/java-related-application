@@ -1,4 +1,4 @@
-package org.dashia18.storage.model;
+package org.dashia18.storage.model.bank;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,7 +14,9 @@ import java.util.UUID;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.dashia18.dto.TransferStatus;
+import org.dashia18.dto.bank.TransferStatus;
+import org.dashia18.storage.model.Auditable;
+import org.dashia18.storage.model.audit.AuditableEntityType;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import org.springframework.data.annotation.CreatedDate;
@@ -26,7 +28,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Builder
 @Accessors(chain = true)
 @Table(name = "money_transfers")
-public class MoneyTransfer {
+public class MoneyTransfer implements Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -64,4 +66,9 @@ public class MoneyTransfer {
 
     @Column
     private String error;
+
+    @Override
+    public AuditableEntityType getType() {
+        return AuditableEntityType.MONEY_TRANSFER;
+    }
 }
