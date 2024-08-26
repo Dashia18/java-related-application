@@ -1,17 +1,14 @@
 package org.dashia18.controller;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static org.dashia18.storage.model.audit.AuditableEntityType.MONEY_TRANSFER;
-import static org.dashia18.storage.model.audit.OperationType.CREATE;
 
 import jakarta.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lombok.val;
 import org.dashia18.dto.bank.BankAccountDto;
 import org.dashia18.dto.bank.MoneyTransferDto;
-import org.dashia18.service.AuditService;
 import org.dashia18.service.BankAccountService;
 import org.dashia18.service.MoneyTransferService;
 import org.dashia18.util.Constants;
@@ -46,7 +43,7 @@ public class BankAccountController {
 
         log.info("A request to retrieve bank account for id {} has been received", accountNumber);
 
-        return bankAccountService.getBankAccount(accountNumber);
+        return bankAccountService.getBankAccount(UUID.fromString(accountNumber));
     }
 
     @GetMapping(value = BANK_ACCOUNTS_API_URI, produces = MediaType.APPLICATION_JSON_VALUE)

@@ -1,6 +1,8 @@
 package org.dashia18;
 
 import org.dashia18.config.JavaRelatedIntegrationTest;
+import org.dashia18.service.AuditService;
+import org.dashia18.service.MoneyTransferService;
 import org.dashia18.service.converter.ConverterService;
 import org.dashia18.service.converter.Formatter;
 import org.dashia18.storage.repo.bank.BankAccountRepo;
@@ -22,4 +24,10 @@ public class AbstractIntegrationTest {
 
     @Autowired
     protected BankAccountRepo bankAccountRepo;
+
+    @Autowired
+    protected MoneyTransferService moneyTransferService;
+
+    @Autowired
+    protected AuditService auditService;
 }

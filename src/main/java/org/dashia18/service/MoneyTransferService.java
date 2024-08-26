@@ -1,6 +1,5 @@
 package org.dashia18.service;
 
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.Pair;
@@ -22,13 +21,8 @@ public class MoneyTransferService {
     private final BankAccountService bankAccountService;
     private final MoneyTransferMapper moneyTransferMapper;
 
-    public MoneyTransferDto transferMoney(MoneyTransferDto dto) {
-        MoneyTransfer moneyTransfer = transfer(dto);
-        return moneyTransferMapper.toDto(moneyTransfer);
-    }
-
     @Audit
-    public MoneyTransfer transfer(MoneyTransferDto dto) {
+    public MoneyTransferDto transferMoney(MoneyTransferDto dto) {
         try {
             BankAccount fromAccount = bankAccountService.getAccount(dto.sourceAccountNumber());
             long fromAmount = fromAccount.getAmount();
@@ -38,24 +32,22 @@ public class MoneyTransferService {
             Pair<Long, Long> updateAccounts =
                     bankAccountService.updateAccounts(fromAccount, toAccount, amount, dto.performRollback());
 
-            return successTransfer(fromAccount, fromAmount, toAmount, amount, updateAccounts);
+            MoneyTransfer moneyTransfer = successTransfer(fromAccount, fromAmount, toAmount, amount, updateAccounts);
+            return moneyTransferMapper.toDto(moneyTransfer);
         } catch (Exception e) {
             String errorMessage = "Error during money transferring ...";
             log.error(errorMessage, e);
-            MoneyTransfer moneyTransfer = failedTransfer(dto, e);
+            MoneyTransferDto moneyTransfer = failedTransfer(dto, e);
             throw new AuditException(errorMessage + e.getMessage(), moneyTransfer.getId(), moneyTransfer.getType(), e);
         }
     }
 
-    private MoneyTransfer failedTransfer(MoneyTransferDto dto, Exception e) {
-        MoneyTransfer moneyTransfer = MoneyTransfer.builder()
-                .fromAccount(UUID.fromString(dto.sourceAccountNumber()))
-                .toAccount(UUID.fromString(dto.targetAccountNumber()))
-                .amount(dto.amount())
-                .status(TransferStatus.FAILED)
-                .error(e.getMessage())
-                .build();
-        return moneyTransferRepo.save(moneyTransfer);
+    private MoneyTransferDto failedTransfer(MoneyTransferDto dto, Exception e) {
+        MoneyTransfer dao = moneyTransferMapper.toDao(dto);
+        dao.setStatus(TransferStatus.FAILED);
+        dao.setError(e.getMessage());
+        MoneyTransfer saved = moneyTransferRepo.save(dao);
+        return moneyTransferMapper.toDto(saved);
     }
 
     private MoneyTransfer successTransfer(BankAccount fromAccount, long fromAmount, long toAmount, long amount,
