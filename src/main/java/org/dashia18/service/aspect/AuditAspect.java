@@ -12,7 +12,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.dashia18.exception.AuditException;
 import org.dashia18.service.AuditService;
-import org.dashia18.storage.model.Auditable;
+import org.dashia18.storage.model.AuditableDto;
 import org.dashia18.storage.model.audit.AuditableEntityType;
 import org.springframework.stereotype.Component;
 
@@ -44,25 +44,25 @@ public class AuditAspect {
         }
     }
 
-    private Auditable extracted(ProceedingJoinPoint joinPoint) {
+    private AuditableDto extracted(ProceedingJoinPoint joinPoint) {
         for (Object arg : joinPoint.getArgs()) {
-            if (arg instanceof Auditable auditable) {
-                return auditable;
+            if (arg instanceof AuditableDto auditableDto) {
+                return auditableDto;
             }
         }
         return null;
     }
 
     private static Long getAuditableId(Object proceed) {
-        if (proceed instanceof Auditable auditable && auditable.getId() != null) {
-            return auditable.getId();
+        if (proceed instanceof AuditableDto auditableDto && auditableDto.getId() != null) {
+            return auditableDto.getId();
         }
         return null;
     }
 
     private static AuditableEntityType getAuditableType(Object proceed) {
-        if (proceed instanceof Auditable auditable && auditable.getId() != null) {
-            return auditable.getType();
+        if (proceed instanceof AuditableDto auditableDto && auditableDto.getId() != null) {
+            return auditableDto.getType();
         }
         return null;
     }

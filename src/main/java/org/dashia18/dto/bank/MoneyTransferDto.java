@@ -1,11 +1,12 @@
 package org.dashia18.dto.bank;
 
-
 import java.util.Objects;
-import org.dashia18.storage.model.Auditable;
+import java.util.UUID;
+import org.dashia18.storage.model.AuditableDto;
+import org.dashia18.storage.model.audit.AuditableEntityType;
 
-public record MoneyTransferDto(Long id, String sourceAccountNumber, String targetAccountNumber, long amount,
-                               boolean performRollback) {
+public record MoneyTransferDto(Long id, UUID sourceAccountNumber, UUID targetAccountNumber, long amount,
+                               boolean performRollback) implements AuditableDto {
     /**
      * Verification of input data for creation the record class, run for default constructor.
      */
@@ -15,5 +16,15 @@ public record MoneyTransferDto(Long id, String sourceAccountNumber, String targe
         if (amount < 1) {
             throw new IllegalArgumentException("Amount of transfer should be more than 0");
         }
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public AuditableEntityType getType() {
+        return AuditableEntityType.MONEY_TRANSFER;
     }
 }

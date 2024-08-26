@@ -9,7 +9,6 @@ import org.dashia18.dto.bank.BankAccountDto;
 import org.dashia18.mapper.BankAccountMapper;
 import org.dashia18.storage.model.bank.BankAccount;
 import org.dashia18.storage.repo.bank.BankAccountRepo;
-import org.dashia18.storage.repo.bank.MoneyTransferRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,16 +16,15 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class BankAccountService {
     private final BankAccountRepo bankAccountRepo;
-    private final MoneyTransferRepo moneyTransferRepo;
     private final BankAccountMapper bankAccountMapper;
 
-    public BankAccountDto getBankAccount(String id) {
+    public BankAccountDto getBankAccount(UUID id) {
         BankAccount bankAccount = getAccount(id);
         return bankAccountMapper.toDto(bankAccount);
     }
 
-    public BankAccount getAccount(String id) {
-        return bankAccountRepo.findBankAccountByAccountNumber(UUID.fromString(id))
+    public BankAccount getAccount(UUID id) {
+        return bankAccountRepo.findBankAccountByAccountNumber(id)
                 .orElseThrow(() -> new NoSuchElementException("Bank Account with id " + id + " is not found"));
     }
 
