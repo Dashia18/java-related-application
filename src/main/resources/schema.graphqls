@@ -1,0 +1,21 @@
+<GRAPHQL>
+type Book {
+  id: ID!
+  title: String!
+  pages: Int
+  author: Author!
+}
+
+type Author {
+  id: ID!
+  name: String!
+  books: [Book!]
+}
+
+type Query {
+  books: [Book!]!
+  book(id: ID!): Book
+  booksByTitle(title: String!): [Book!]
+  booksByAuthorName(authorName: String!): [Book!]
+  booksByPages(minPages: Int!, maxPages: Int!): [Book!]
+}
