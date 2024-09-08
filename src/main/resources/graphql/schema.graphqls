@@ -1,4 +1,3 @@
-<GRAPHQL>
 type Book {
   id: ID!
   title: String!
@@ -18,4 +17,8 @@ type Query {
   booksByTitle(title: String!): [Book!]
   booksByAuthorName(authorName: String!): [Book!]
   booksByPages(minPages: Int!, maxPages: Int!): [Book!]
+}
+
+type Mutation {
+  createBook(title: String!, pages: Int!, authorId: ID!): Book
 }

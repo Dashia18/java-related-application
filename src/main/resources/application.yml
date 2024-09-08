@@ -29,6 +29,12 @@ spring:
         name: ${processed-events-topic:outbound_processed}
         sendNotificationsTo: test@gmail.com
 
+  graphql:
+    graphiql:
+      enabled: true
+      endpoint: /graphql
+      mapping: /graphiql
+
 hibernate:
   format_sql: false
   jdbc:

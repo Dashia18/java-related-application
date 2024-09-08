@@ -2,14 +2,18 @@ package org.dashia18.service;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.dashia18.storage.model.book.Author;
 import org.dashia18.storage.model.book.Book;
+import org.dashia18.storage.repo.book.AuthorRepository;
 import org.dashia18.storage.repo.book.BookRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class BookService {
+public class LibraryService {
     private final BookRepository bookRepository;
+    private final AuthorRepository authorRepository;
+
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
@@ -28,6 +32,14 @@ public class BookService {
 
     public List<Book> getBooksByPages(int minPages, int maxPages) {
         return bookRepository.findByPagesBetween(minPages, maxPages);
+    }
+
+    public Author getByBook(Book book) {
+        return authorRepository.findById(book.getAuthor().getId()).orElse(null);
+    }
+
+    public Author getAuthorById(Long id) {
+        return authorRepository.findById(id).orElse(null);
     }
 
     public Book save(Book book) {
