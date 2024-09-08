@@ -103,6 +103,13 @@
             <artifactId>liquibase-core</artifactId>
         </dependency>
 
+        <!-- GraphQL Spring Boot Starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-graphql</artifactId>
+            <version>3.3.3</version>
+        </dependency>
+
         <!-- Tests Dependencies> -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

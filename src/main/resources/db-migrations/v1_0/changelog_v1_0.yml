@@ -20,3 +20,6 @@ databaseChangeLog:
   - include:
       file: 24082024_add_audit_table.sql
       relativeToChangelogFile: true
+  - include:
+      file: 06092024_create_book.sql
+      relativeToChangelogFile: true
